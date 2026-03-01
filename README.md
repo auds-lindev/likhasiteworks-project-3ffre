@@ -1,6 +1,5 @@
 ---
-title: 
-colorFrom: blue
+title: beibico
 colorTo: pink
 emoji: 📱
 tags:
