@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beibico - Quality Baby & Kids Products</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
                     <div class="w-10 h-10 bg-gradient-to-br from-primary to-pink-400 rounded-full flex items-center justify-center text-white">
-                        <i data-lucide="baby" class="w-6 h-6"></i>
+                        <i class="fa-solid fa-baby text-xl"></i>
                     </div>
                     <span class="font-serif text-2xl font-bold text-gray-800 tracking-tight">Beibico</span>
                 </div>
@@ -55,12 +55,12 @@
                 <!-- Cart & Mobile Menu -->
                 <div class="flex items-center gap-4">
                     <button onclick="toggleCart()" class="relative p-2 text-gray-600 hover:text-primary transition-colors">
-                        <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                        <i class="fa-solid fa-bag-shopping text-xl"></i>
                         <span id="cart-count" class="absolute -top-1 -right-1 bg-primary text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center opacity-0 transition-opacity">0</span>
                     </button>
                     
                     <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-600 hover:text-primary">
-                        <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
+                        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
                     </button>
                 </div>
             </div>
@@ -78,96 +78,80 @@
     </nav>
 
     <!-- Cart Sidebar -->
-    <div id="cart-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300" onclick="toggleCart()"></div>
+    <div id="cart-overlay" class="fixed inset-0 bg-black/50 z-50 hidden opacity-0 transition-opacity duration-300" onclick="toggleCart()"></div>
     <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
-        <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-gradient-to-r from-soft to-white">
-            <h2 class="text-2xl font-serif font-bold text-gray-800 flex items-center gap-2">
-                <i data-lucide="shopping-bag" class="w-6 h-6 text-primary"></i>
-                Your Cart
-            </h2>
-            <button onclick="toggleCart()" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
-                <i data-lucide="x" class="w-6 h-6 text-gray-500"></i>
+        <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+            <h2 class="text-2xl font-serif font-bold text-gray-800">Your Cart</h2>
+            <button onclick="toggleCart()" class="text-gray-400 hover:text-gray-600 transition-colors">
+                <i class="fa-solid fa-xmark text-2xl"></i>
             </button>
         </div>
-        
         <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
             <!-- Cart items injected here -->
         </div>
-        
-        <div class="p-6 border-t border-gray-100 bg-gradient-to-r from-white to-soft">
+        <div class="p-6 border-t border-gray-100 bg-gray-50">
             <div class="flex justify-between items-center mb-4">
                 <span class="text-gray-600">Subtotal</span>
-                <span id="cart-total" class="text-2xl font-bold text-gray-800">₱0.00</span>
+                <span id="cart-total" class="text-2xl font-bold text-primary">₱0.00</span>
             </div>
-            <button onclick="checkout()" class="w-full bg-primary hover:bg-pink-600 text-white font-semibold py-4 rounded-full transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2 shadow-lg shadow-pink-200">
-                <i data-lucide="credit-card" class="w-5 h-5"></i>
+            <button onclick="checkout()" class="w-full bg-primary hover:bg-pink-600 text-white font-semibold py-4 rounded-full transition-all transform hover:scale-[1.02] shadow-lg shadow-pink-200">
                 Checkout
             </button>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-soft via-cream to-cream overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8 animate-fade-in-up">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-pink-100">
-                        <i data-lucide="sparkles" class="w-4 h-4 text-primary"></i>
-                        <span class="text-sm font-medium text-gray-600">Welcome to Beibico</span>
+    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-soft to-cream">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8 animate-fade-in-up">
+                <div class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-pink-100">
+                    <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                    <span class="text-sm font-medium text-gray-600">Trusted by 10,000+ Parents</span>
+                </div>
+                <h1 class="font-serif text-5xl lg:text-7xl font-bold text-gray-800 leading-tight">
+                    Everything for Your <span class="text-primary">Little One</span>
+                </h1>
+                <p class="text-lg text-gray-600 max-w-lg leading-relaxed">
+                    Discover our curated collection of premium baby essentials, toys, and clothing. Safe, affordable, and absolutely adorable.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#products" class="inline-flex items-center gap-2 bg-primary hover:bg-pink-600 text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shadow-pink-200">
+                        Shop Now
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#features" class="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-800 px-8 py-4 rounded-full font-semibold transition-all border border-gray-200">
+                        Learn More
+                    </a>
+                </div>
+                <div class="flex items-center gap-4 pt-4">
+                    <div class="flex -space-x-3">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white">
+                        <img src="https://i.pravatar.cc/150?img=8" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white">
                     </div>
-                    
-                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-gray-800 leading-tight">
-                        Quality Baby & <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-pink-400">Kids Products</span> for Your Little Ones
-                    </h1>
-                    
-                    <p class="text-lg text-gray-600 max-w-lg leading-relaxed">
-                        Discover adorable, affordable, and high-quality products for your babies and kids. Shop with love, delivered with care.
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#products" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-pink-600 text-white font-semibold px-8 py-4 rounded-full transition-all transform hover:scale-105 shadow-lg shadow-pink-200">
-                            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-                            Start Shopping
-                        </a>
-                        <a href="#features" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-700 font-semibold px-8 py-4 rounded-full transition-all border-2 border-gray-200 hover:border-primary">
-                            <i data-lucide="heart" class="w-5 h-5 text-primary"></i>
-                            Learn More
-                        </a>
-                    </div>
-                    
-                    <div class="flex items-center gap-6 pt-4">
-                        <div class="flex -space-x-3">
-                            <img src="https://static.photos/people/200x200/1" class="w-10 h-10 rounded-full border-2 border-white" alt="Customer">
-                            <img src="https://static.photos/people/200x200/2" class="w-10 h-10 rounded-full border-2 border-white" alt="Customer">
-                            <img src="https://static.photos/people/200x200/3" class="w-10 h-10 rounded-full border-2 border-white" alt="Customer">
+                    <div class="text-sm">
+                        <div class="flex text-yellow-400">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
                         </div>
-                        <div>
-                            <div class="flex items-center gap-1 text-yellow-400">
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            </div>
-                            <p class="text-sm text-gray-500">Trusted by 2,000+ parents</p>
-                        </div>
+                        <p class="text-gray-500">4.9/5 from 2,000+ reviews</p>
                     </div>
                 </div>
-                
-                <div class="relative animate-fade-in-up" style="animation-delay: 0.2s;">
-                    <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-3xl"></div>
-                    <img src="https://mmm27.webeaseph.com/assets/hero-image-CxhJyNEu.jpg" alt="Baby products collection" class="relative rounded-3xl shadow-2xl w-full object-cover h-[500px] lg:h-[600px]">
-                    
-                    <!-- Floating Badge -->
-                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl animate-bounce-slow">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                                <i data-lucide="check-circle" class="w-6 h-6 text-green-600"></i>
-                            </div>
-                            <div>
-                                <p class="font-bold text-gray-800">Baby Safe</p>
-                                <p class="text-sm text-gray-500">Certified Products</p>
-                            </div>
+            </div>
+            <div class="relative lg:h-[600px] flex items-center justify-center">
+                <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-full blur-3xl"></div>
+                <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&auto=format&fit=crop" alt="Happy baby with toys" class="relative rounded-3xl shadow-2xl w-full h-full object-cover animate-bounce-slow">
+                <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                            <i class="fa-solid fa-check text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-800">Safe & Tested</p>
+                            <p class="text-sm text-gray-500">Premium Quality</p>
                         </div>
                     </div>
                 </div>
@@ -178,29 +162,35 @@
     <!-- Features Section -->
     <section id="features" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-primary font-semibold text-sm uppercase tracking-wider">Why Choose Us</span>
+                <h2 class="font-serif text-4xl font-bold text-gray-800 mt-2 mb-4">Made with Love for Your Baby</h2>
+                <p class="text-gray-600">We understand what parents need. That's why we provide only the best for your precious little ones.</p>
+            </div>
+            
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="group p-8 rounded-3xl bg-gradient-to-b from-soft to-white border border-pink-50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="truck" class="w-8 h-8 text-primary"></i>
+                <div class="group p-8 rounded-3xl bg-soft hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-pink-100">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-truck-fast text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-800 mb-3">Fast Delivery</h3>
-                    <p class="text-gray-600">Quick and safe delivery to your doorstep. We ensure your baby products arrive on time, every time.</p>
+                    <p class="text-gray-600 leading-relaxed">Free shipping on orders over ₱999. Get your baby essentials delivered within 2-3 days.</p>
                 </div>
                 
-                <div class="group p-8 rounded-3xl bg-gradient-to-b from-blue-50 to-white border border-blue-50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-16 h-16 bg-secondary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="shield-check" class="w-8 h-8 text-blue-500"></i>
+                <div class="group p-8 rounded-3xl bg-soft hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-pink-100">
+                    <div class="w-14 h-14 bg-secondary/20 rounded-2xl flex items-center justify-center text-blue-500 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-shield-check text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Safe Products</h3>
-                    <p class="text-gray-600">All items tested and baby-safe certified. Your child's safety is our top priority.</p>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Safety First</h3>
+                    <p class="text-gray-600 leading-relaxed">All products are tested and certified safe for babies. Non-toxic materials only.</p>
                 </div>
                 
-                <div class="group p-8 rounded-3xl bg-gradient-to-b from-purple-50 to-white border border-purple-50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="heart" class="w-8 h-8 text-purple-500"></i>
+                <div class="group p-8 rounded-3xl bg-soft hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-pink-100">
+                    <div class="w-14 h-14 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-500 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-heart text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-800 mb-3">Made with Love</h3>
-                    <p class="text-gray-600">Every product selected with care. We only choose items we'd use for our own children.</p>
+                    <p class="text-gray-600 leading-relaxed">Each item is carefully selected with your baby's comfort and happiness in mind.</p>
                 </div>
             </div>
         </div>
@@ -209,233 +199,159 @@
     <!-- Products Section -->
     <section id="products" class="py-20 px-4 sm:px-6 lg:px-8 bg-cream">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-pink-100 mb-6">
-                    <i data-lucide="sparkles" class="w-4 h-4 text-primary"></i>
-                    <span class="text-sm font-medium text-gray-600">Best Sellers</span>
-                </span>
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-800 mb-4">Featured Products</h2>
-                <p class="text-gray-600 text-lg max-w-2xl mx-auto">Discover our most loved items, handpicked for your little ones</p>
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+                <div>
+                    <span class="text-primary font-semibold text-sm uppercase tracking-wider">Our Collection</span>
+                    <h2 class="font-serif text-4xl font-bold text-gray-800 mt-2">Featured Products</h2>
+                </div>
+                <button onclick="showComingSoon()" class="text-primary font-semibold hover:text-pink-600 transition-colors flex items-center gap-2">
+                    View All Products
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
             </div>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Product 1 -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 product-card">
-                    <div class="relative overflow-hidden">
-                        <img src="https://mmm27.webeaseph.com/assets/product-1-00yaxo1d.jpg" alt="Soft Blue Bunny Plush Toy" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-4 left-4">
-                            <span class="px-3 py-1 bg-primary text-white text-xs font-bold rounded-full flex items-center gap-1">
-                                <i data-lucide="tag" class="w-3 h-3"></i>
-                                Toys
-                            </span>
-                        </div>
-                        <button onclick="addToCart(1, 'Soft Blue Bunny Plush Toy', 399, 'https://mmm27.webeaseph.com/assets/product-1-00yaxo1d.jpg')" class="absolute bottom-4 right-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all transform translate-y-16 group-hover:translate-y-0">
-                            <i data-lucide="plus" class="w-6 h-6"></i>
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="relative overflow-hidden aspect-square">
+                        <img src="https://images.unsplash.com/photo-1560506840-ec148e82a604?w=600&auto=format&fit=crop" alt="Baby Crib" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">Bestseller</div>
+                        <button onclick="addToCart(1, 'Premium Baby Crib', 4599.00, 'https://images.unsplash.com/photo-1560506840-ec148e82a604?w=600&auto=format&fit=crop')" class="absolute bottom-4 right-4 w-12 h-12 bg-white text-primary rounded-full shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-primary hover:text-white">
+                            <i class="fa-solid fa-plus"></i>
                         </button>
                     </div>
                     <div class="p-6">
-                        <div class="flex items-center gap-1 text-yellow-400 mb-2">
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <span class="text-gray-400 text-sm ml-1">(5.0)</span>
+                        <div class="flex text-yellow-400 text-sm mb-2">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">Soft Blue Bunny Plush Toy</h3>
-                        <p class="text-2xl font-bold text-primary">₱399.00</p>
+                        <h3 class="font-bold text-gray-800 mb-2">Premium Baby Crib</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-lg">₱4,599</span>
+                            <span class="text-gray-400 text-sm line-through">₱5,999</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Product 2 -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 product-card">
-                    <div class="relative overflow-hidden">
-                        <img src="https://mmm27.webeaseph.com/assets/product-2-CZWthozL.jpg" alt="Pink Cotton Baby Onesie" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-4 left-4">
-                            <span class="px-3 py-1 bg-blue-400 text-white text-xs font-bold rounded-full flex items-center gap-1">
-                                <i data-lucide="shirt" class="w-3 h-3"></i>
-                                Clothing
-                            </span>
-                        </div>
-                        <button onclick="addToCart(2, 'Pink Cotton Baby Onesie', 299, 'https://mmm27.webeaseph.com/assets/product-2-CZWthozL.jpg')" class="absolute bottom-4 right-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all transform translate-y-16 group-hover:translate-y-0">
-                            <i data-lucide="plus" class="w-6 h-6"></i>
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="relative overflow-hidden aspect-square">
+                        <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&auto=format&fit=crop" alt="Stroller" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full">New</div>
+                        <button onclick="addToCart(2, 'Luxury Baby Stroller', 3299.00, 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&auto=format&fit=crop')" class="absolute bottom-4 right-4 w-12 h-12 bg-white text-primary rounded-full shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-primary hover:text-white">
+                            <i class="fa-solid fa-plus"></i>
                         </button>
                     </div>
                     <div class="p-6">
-                        <div class="flex items-center gap-1 text-yellow-400 mb-2">
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 text-gray-300"></i>
-                            <span class="text-gray-400 text-sm ml-1">(4.8)</span>
+                        <div class="flex text-yellow-400 text-sm mb-2">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">Pink Cotton Baby Onesie</h3>
-                        <p class="text-2xl font-bold text-primary">₱299.00</p>
+                        <h3 class="font-bold text-gray-800 mb-2">Luxury Baby Stroller</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-lg">₱3,299</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Product 3 -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 product-card">
-                    <div class="relative overflow-hidden">
-                        <img src="https://mmm27.webeaseph.com/assets/product-3-CGbcuVZO.jpg" alt="Baby Training Sippy Cup" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-4 left-4">
-                            <span class="px-3 py-1 bg-green-400 text-white text-xs font-bold rounded-full flex items-center gap-1">
-                                <i data-lucide="utensils" class="w-3 h-3"></i>
-                                Feeding
-                            </span>
-                        </div>
-                        <button onclick="addToCart(3, 'Baby Training Sippy Cup', 249, 'https://mmm27.webeaseph.com/assets/product-3-CGbcuVZO.jpg')" class="absolute bottom-4 right-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all transform translate-y-16 group-hover:translate-y-0">
-                            <i data-lucide="plus" class="w-6 h-6"></i>
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="relative overflow-hidden aspect-square">
+                        <img src="https://images.unsplash.com/photo-1544776193-352d25ca82cd?w=600&auto=format&fit=crop" alt="Toys Set" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <button onclick="addToCart(3, 'Educational Toy Set', 899.00, 'https://images.unsplash.com/photo-1544776193-352d25ca82cd?w=600&auto=format&fit=crop')" class="absolute bottom-4 right-4 w-12 h-12 bg-white text-primary rounded-full shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-primary hover:text-white">
+                            <i class="fa-solid fa-plus"></i>
                         </button>
                     </div>
                     <div class="p-6">
-                        <div class="flex items-center gap-1 text-yellow-400 mb-2">
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <span class="text-gray-400 text-sm ml-1">(4.9)</span>
+                        <div class="flex text-yellow-400 text-sm mb-2">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">Baby Training Sippy Cup</h3>
-                        <p class="text-2xl font-bold text-primary">₱249.00</p>
+                        <h3 class="font-bold text-gray-800 mb-2">Educational Toy Set</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-lg">₱899</span>
+                            <span class="text-gray-400 text-sm line-through">₱1,299</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Product 4 -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 product-card">
-                    <div class="relative overflow-hidden">
-                        <img src="https://mmm27.webeaseph.com/assets/product-4-C9He3rEs.jpg" alt="Pink Baby First Shoes" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-4 left-4">
-                            <span class="px-3 py-1 bg-purple-400 text-white text-xs font-bold rounded-full flex items-center gap-1">
-                                <i data-lucide="footprints" class="w-3 h-3"></i>
-                                Footwear
-                            </span>
-                        </div>
-                        <button onclick="addToCart(4, 'Pink Baby First Shoes', 449, 'https://mmm27.webeaseph.com/assets/product-4-C9He3rEs.jpg')" class="absolute bottom-4 right-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all transform translate-y-16 group-hover:translate-y-0">
-                            <i data-lucide="plus" class="w-6 h-6"></i>
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="relative overflow-hidden aspect-square">
+                        <img src="https://images.unsplash.com/photo-1522771930-78848dc92939?w=600&auto=format&fit=crop" alt="Baby Clothes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">Sale</div>
+                        <button onclick="addToCart(4, 'Organic Cotton Set', 649.00, 'https://images.unsplash.com/photo-1522771930-78848dc92939?w=600&auto=format&fit=crop')" class="absolute bottom-4 right-4 w-12 h-12 bg-white text-primary rounded-full shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-primary hover:text-white">
+                            <i class="fa-solid fa-plus"></i>
                         </button>
                     </div>
                     <div class="p-6">
-                        <div class="flex items-center gap-1 text-yellow-400 mb-2">
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 text-gray-300"></i>
-                            <span class="text-gray-400 text-sm ml-1">(4.7)</span>
+                        <div class="flex text-yellow-400 text-sm mb-2">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">Pink Baby First Shoes</h3>
-                        <p class="text-2xl font-bold text-primary">₱449.00</p>
+                        <h3 class="font-bold text-gray-800 mb-2">Organic Cotton Set</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-lg">₱649</span>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Product 5 -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 product-card">
-                    <div class="relative overflow-hidden">
-                        <img src="https://mmm27.webeaseph.com/assets/product-5-Clajfwds.jpg" alt="Cozy Cream Baby Blanket" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-4 left-4">
-                            <span class="px-3 py-1 bg-yellow-400 text-white text-xs font-bold rounded-full flex items-center gap-1">
-                                <i data-lucide="bed" class="w-3 h-3"></i>
-                                Bedding
-                            </span>
-                        </div>
-                        <button onclick="addToCart(5, 'Cozy Cream Baby Blanket', 599, 'https://mmm27.webeaseph.com/assets/product-5-Clajfwds.jpg')" class="absolute bottom-4 right-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all transform translate-y-16 group-hover:translate-y-0">
-                            <i data-lucide="plus" class="w-6 h-6"></i>
-                        </button>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center gap-1 text-yellow-400 mb-2">
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <span class="text-gray-400 text-sm ml-1">(5.0)</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">Cozy Cream Baby Blanket</h3>
-                        <p class="text-2xl font-bold text-primary">₱599.00</p>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 product-card">
-                    <div class="relative overflow-hidden">
-                        <img src="https://mmm27.webeaseph.com/assets/product-6-BJd36T_z.jpg" alt="Wooden Teething Ring" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-4 left-4">
-                            <span class="px-3 py-1 bg-primary text-white text-xs font-bold rounded-full flex items-center gap-1">
-                                <i data-lucide="smile" class="w-3 h-3"></i>
-                                Toys
-                            </span>
-                        </div>
-                        <button onclick="addToCart(6, 'Wooden Teething Ring', 199, 'https://mmm27.webeaseph.com/assets/product-6-BJd36T_z.jpg')" class="absolute bottom-4 right-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all transform translate-y-16 group-hover:translate-y-0">
-                            <i data-lucide="plus" class="w-6 h-6"></i>
-                        </button>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center gap-1 text-yellow-400 mb-2">
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            <span class="text-gray-400 text-sm ml-1">(4.9)</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">Wooden Teething Ring</h3>
-                        <p class="text-2xl font-bold text-primary">₱199.00</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-12">
-                <a href="#" onclick="showComingSoon()" class="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
-                    View All Products
-                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary to-pink-400 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <i data-lucide="heart" class="w-32 h-32 absolute top-10 left-10"></i>
-            <i data-lucide="star" class="w-24 h-24 absolute bottom-10 right-10"></i>
-            <i data-lucide="baby" class="w-40 h-40 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></i>
-        </div>
-        
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Ready to Shop for Your Little One?</h2>
-            <p class="text-white/90 text-lg mb-8 max-w-2xl mx-auto">Browse our collection of adorable baby and kids products. Quality you can trust at prices you'll love.</p>
-            <a href="#products" class="inline-flex items-center gap-2 bg-white text-primary hover:bg-gray-100 font-bold px-8 py-4 rounded-full transition-all transform hover:scale-105 shadow-lg">
-                <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-                Start Shopping Now
-            </a>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-3xl p-8 md:p-16 text-center">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-800 mb-4">Have Questions?</h2>
+                <p class="text-gray-600 mb-8 max-w-2xl mx-auto">We're here to help! Reach out to our friendly customer service team for any inquiries about our products.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="mailto:hello@beibico.com" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-pink-600 text-white px-8 py-4 rounded-full font-semibold transition-all">
+                        <i class="fa-solid fa-envelope"></i>
+                        Email Us
+                    </a>
+                    <a href="tel:+631234567890" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-800 px-8 py-4 rounded-full font-semibold transition-all border border-gray-200">
+                        <i class="fa-solid fa-phone"></i>
+                        Call Us
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-gray-900 text-white pt-16 pb-8 px-4 sm:px-6 lg:px-8">
+    <footer class="bg-gray-900 text-white py-16 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-3 gap-12 mb-12">
-                <div>
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
                     <div class="flex items-center gap-2 mb-6">
-                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-pink-400 rounded-full flex items-center justify-center">
-                            <i data-lucide="baby" class="w-6 h-6"></i>
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-baby text-white text-xl"></i>
                         </div>
                         <span class="font-serif text-2xl font-bold">Beibico</span>
                     </div>
                     <p class="text-gray-400 mb-6 max-w-sm">Quality baby and kids products made with love. We're dedicated to providing safe, affordable, and adorable items for your little ones.</p>
                     <div class="flex gap-4">
                         <a href="#" onclick="showComingSoon()" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors">
-                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                            <i class="fa-brands fa-facebook-f"></i>
                         </a>
                         <a href="#" onclick="showComingSoon()" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors">
-                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                            <i class="fa-brands fa-instagram"></i>
                         </a>
                         <a href="#" onclick="showComingSoon()" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors">
-                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                            <i class="fa-brands fa-twitter"></i>
                         </a>
                     </div>
                 </div>
@@ -443,10 +359,10 @@
                 <div>
                     <h4 class="font-bold text-lg mb-6">Quick Links</h4>
                     <ul class="space-y-3 text-gray-400">
-                        <li><a href="#home" class="hover:text-primary transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4"></i> Home</a></li>
-                        <li><a href="#products" class="hover:text-primary transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4"></i> Shop</a></li>
-                        <li><a href="#features" class="hover:text-primary transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4"></i> About Us</a></li>
-                        <li><a href="#" onclick="showComingSoon()" class="hover:text-primary transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4"></i> Contact</a></li>
+                        <li><a href="#home" class="hover:text-primary transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Home</a></li>
+                        <li><a href="#products" class="hover:text-primary transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Shop</a></li>
+                        <li><a href="#features" class="hover:text-primary transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> About Us</a></li>
+                        <li><a href="#" onclick="showComingSoon()" class="hover:text-primary transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Contact</a></li>
                     </ul>
                 </div>
                 
@@ -456,7 +372,7 @@
                     <form onsubmit="event.preventDefault(); showComingSoon();" class="flex gap-2">
                         <input type="email" placeholder="Your email" class="flex-1 px-4 py-2 rounded-full bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors">
                         <button type="submit" class="px-6 py-2 bg-primary hover:bg-pink-600 rounded-full font-semibold transition-colors flex items-center gap-2">
-                            <i data-lucide="send" class="w-4 h-4"></i>
+                            <i class="fa-solid fa-paper-plane text-sm"></i>
                             Join
                         </button>
                     </form>
@@ -476,7 +392,7 @@
     <!-- Toast Notification -->
     <div id="toast" class="fixed bottom-6 right-6 bg-gray-900 text-white px-6 py-4 rounded-2xl shadow-2xl transform translate-y-24 transition-transform duration-300 z-50 flex items-center gap-3">
         <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-            <i data-lucide="check" class="w-5 h-5"></i>
+            <i class="fa-solid fa-check"></i>
         </div>
         <div>
             <p class="font-semibold">Added to cart!</p>
