@@ -1,0 +1,237 @@
+// Initialize Lucide icons
+lucide.createIcons();
+
+// Cart State
+let cart = [];
+let isCartOpen = false;
+
+// Mobile Menu Toggle
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-icon');
+    
+    if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        icon.setAttribute('data-lucide', 'x');
+    } else {
+        menu.classList.add('hidden');
+        icon.setAttribute('data-lucide', 'menu');
+    }
+    lucide.createIcons();
+}
+
+// Cart Toggle
+function toggleCart() {
+    const sidebar = document.getElementById('cart-sidebar');
+    const overlay = document.getElementById('cart-overlay');
+    
+    isCartOpen = !isCartOpen;
+    
+    if (isCartOpen) {
+        sidebar.classList.remove('translate-x-full');
+        overlay.classList.remove('hidden');
+        setTimeout(() => {
+            overlay.classList.remove('opacity-0');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    } else {
+        sidebar.classList.add('translate-x-full');
+        overlay.classList.add('opacity-0');
+        setTimeout(() => {
+            overlay.classList.add('hidden');
+        }, 300);
+        document.body.style.overflow = '';
+    }
+}
+
+// Add to Cart
+function addToCart(id, name, price, image) {
+    const existingItem = cart.find(item => item.id === id);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id,
+            name,
+            price,
+            image,
+            quantity: 1
+        });
+    }
+    
+    updateCart();
+    showToast(`Added ${name} to cart`);
+    
+    // Animate cart icon
+    const cartBtn = document.querySelector('[onclick="toggleCart()"]');
+    cartBtn.classList.add('scale-110');
+    setTimeout(() => cartBtn.classList.remove('scale-110'), 200);
+}
+
+// Remove from Cart
+function removeFromCart(id) {
+    const itemElement = document.querySelector(`[data-cart-id="${id}"]`);
+    if (itemElement) {
+        itemElement.classList.add('removing');
+        setTimeout(() => {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }, 300);
+    }
+}
+
+// Update Quantity
+function updateQuantity(id, change) {
+    const item = cart.find(item => item.id === id);
+    if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+            removeFromCart(id);
+        } else {
+            updateCart();
+        }
+    }
+}
+
+// Update Cart UI
+function updateCart() {
+    const cartItems = document.getElementById('cart-items');
+    const cartCount = document.getElementById('cart-count');
+    const cartTotal = document.getElementById('cart-total');
+    
+    // Update count badge
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems;
+    cartCount.classList.toggle('opacity-0', totalItems === 0);
+    
+    // Update total
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    cartTotal.textContent = `₱${total.toFixed(2)}`;
+    
+    // Update items list
+    if (cart.length === 0) {
+        cartItems.innerHTML = `
+            <div class="text-center text-gray-500 py-8">
+                <i data-lucide="shopping-bag" class="w-12 h-12 mx-auto mb-3 opacity-30"></i>
+                <p>Your cart is empty</p>
+            </div>
+        `;
+    } else {
+        cartItems.innerHTML = cart.map(item => `
+            <div class="cart-item flex gap-4 bg-white p-4 rounded-2xl border border-gray-100" data-cart-id="${item.id}">
+                <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded-xl">
+                <div class="flex-1">
+                    <h4 class="font-semibold text-gray-800 line-clamp-1">${item.name}</h4>
+                    <p class="text-primary font-bold">₱${item.price.toFixed(2)}</p>
+                    <div class="flex items-center gap-3 mt-2">
+                        <button onclick="updateQuantity(${item.id}, -1)" class="w-6 h-6 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 transition-colors">
+                            <i data-lucide="minus" class="w-3 h-3"></i>
+                        </button>
+                        <span class="font-semibold text-sm w-4 text-center">${item.quantity}</span>
+                        <button onclick="updateQuantity(${item.id}, 1)" class="w-6 h-6 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 transition-colors">
+                            <i data-lucide="plus" class="w-3 h-3"></i>
+                        </button>
+                    </div>
+                </div>
+                <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-red-500 transition-colors self-start">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                </button>
+            </div>
+        `).join('');
+    }
+    
+    lucide.createIcons();
+}
+
+// Toast Notification
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toast-message');
+    
+    toastMessage.textContent = message;
+    toast.classList.remove('translate-y-24');
+    
+    setTimeout(() => {
+        toast.classList.add('translate-y-24');
+    }, 3000);
+}
+
+// Checkout
+function checkout() {
+    if (cart.length === 0) {
+        showToast('Your cart is empty!');
+        return;
+    }
+    showToast('Checkout coming soon! Thank you for shopping.');
+    toggleCart();
+}
+
+// Coming Soon Popup
+function showComingSoon() {
+    showToast('Coming soon! Stay tuned.');
+}
+
+// Navbar scroll effect
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 100) {
+        navbar.classList.add('shadow-md');
+    } else {
+        navbar.classList.remove('shadow-md');
+    }
+    
+    lastScroll = currentScroll;
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in-up');
+            entry.target.style.opacity = '1';
+        }
+    });
+}, observerOptions);
+
+// Observe elements
+document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('.group');
+    animatedElements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.animationDelay = `${index * 0.1}s`;
+        observer.observe(el);
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            }
+        });
+    });
+});
+
+// Close mobile menu on resize
+window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+        document.getElementById('mobile-menu').classList.add('hidden');
+    }
+});
